@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/deepseek-proxy.js": { "maxDuration": 60 }
+  },
   "headers": [
     {
       "source": "/(.*)",
