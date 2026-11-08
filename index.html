@@ -27,17 +27,17 @@
     <div class="sidebar-header">
       <h1><span class="logo">🎓</span>AI Exam Coach</h1>
       <div class="sidebar-header-actions">
-        <button class="icon-btn" onclick="toggleDarkMode()" title="Toggle dark mode" id="darkModeBtn">🌙</button>
-        <button class="icon-btn sidebar-close-btn" onclick="toggleSidebar()" title="Close navigation">✕</button>
+        <button class="icon-btn" onclick="toggleDarkMode()" title="Toggle dark mode" id="darkModeBtn" data-i18n-title="theme">🌙</button>
+        <button class="icon-btn sidebar-close-btn" onclick="toggleSidebar()" title="Close navigation" data-i18n-title="closeNavigation">✕</button>
       </div>
     </div>
     <div class="sidebar-body">
       <div class="sb-section">
-        <button class="new-session-btn" onclick="newSession()">＋ New Session</button>
+        <button class="new-session-btn" onclick="newSession()"><span data-i18n="newSession">＋ New Session</span></button>
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-title">🌐 Language</div>
+        <div class="sb-section-title"><span data-i18n="language">🌐 Language</span></div>
         <select class="lang-select" id="langSelect" onchange="onLangChange()">
           <option value="en">English</option>
           <option value="ru">Русский</option>
@@ -46,22 +46,20 @@
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-title">📚 Study Material</div>
+        <div class="sb-section-title"><span data-i18n="material">📚 Study Material</span></div>
         <div class="file-upload-row">
-          <label class="file-upload-btn" id="fileUploadBtn">
-            📎 Upload .pdf / .docx / .xlsx
-            <input type="file" id="fileInput" accept=".pdf,.docx,.xlsx,.xls" style="display:none" onchange="handleFileUpload(event)">
+          <label class="file-upload-btn" id="fileUploadBtn"><span data-i18n="upload">📎 Upload .pdf / .docx / .xlsx</span><input type="file" id="fileInput" accept=".pdf,.docx,.xlsx,.xls" style="display:none" onchange="handleFileUpload(event)">
           </label>
-          <button class="file-clear-btn" onclick="clearUploadedFile()" title="Clear">✕</button>
+          <button class="file-clear-btn" onclick="clearUploadedFile()" title="Clear" data-i18n-title="clear">✕</button>
         </div>
         <div class="file-info" id="fileInfo"></div>
-        <textarea class="material-textarea" id="materialInput" placeholder="Paste notes here, or upload a file above…" oninput="saveMaterial()"></textarea>
+        <textarea class="material-textarea" id="materialInput" placeholder="Paste notes here, or upload a file above…" oninput="saveMaterial()" data-i18n-placeholder="materialPlaceholder"></textarea>
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-title">⚡ Quick Tools</div>
+        <div class="sb-section-title"><span data-i18n="tools">⚡ Quick Tools</span></div>
         <div class="qcount-row">
-          <label>Questions:</label>
+          <label><span data-i18n="questions">Questions:</span></label>
           <select class="qcount-select" id="qcountSelect" onchange="onQCountChange()">
             <option value="3">3</option>
             <option value="5" selected>5</option>
@@ -70,16 +68,16 @@
             <option value="20">20</option>
           </select>
         </div>
-        <button class="sb-btn" onclick="quickCommand('/quiz')"><span class="sb-icon">📝</span>Single-Answer Quiz</button>
-        <button class="sb-btn" onclick="quickCommand('/multiquiz')"><span class="sb-icon">☑️</span>Multi-Answer Quiz</button>
-        <button class="sb-btn" onclick="quickCommand('/coding')"><span class="sb-icon">💻</span>Coding Problem</button>
-        <button class="sb-btn" onclick="quickCommand('/explain')"><span class="sb-icon">💡</span>Explain Topic</button>
-        <button class="sb-btn" onclick="quickCommand('/flashcards')"><span class="sb-icon">🃏</span>Flashcards</button>
-        <button class="sb-btn" onclick="quickCommand('/summary')"><span class="sb-icon">📋</span>Summarize Material</button>
+        <button class="sb-btn" onclick="quickCommand('/quiz')"><span class="sb-icon">📝</span><span data-i18n="singleQuiz">Single-Answer Quiz</span></button>
+        <button class="sb-btn" onclick="quickCommand('/multiquiz')"><span class="sb-icon">☑️</span><span data-i18n="multiQuiz">Multi-Answer Quiz</span></button>
+        <button class="sb-btn" onclick="quickCommand('/coding')"><span class="sb-icon">💻</span><span data-i18n="codingProblem">Coding Problem</span></button>
+        <button class="sb-btn" onclick="quickCommand('/explain')"><span class="sb-icon">💡</span><span data-i18n="explain">Explain Topic</span></button>
+        <button class="sb-btn" onclick="quickCommand('/flashcards')"><span class="sb-icon">🃏</span><span data-i18n="flashcards">Flashcards</span></button>
+        <button class="sb-btn" onclick="quickCommand('/summary')"><span class="sb-icon">📋</span><span data-i18n="summary">Summarize Material</span></button>
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-title">📊 Stats</div>
+        <div class="sb-section-title"><span data-i18n="stats">📊 Stats</span></div>
         <div class="stats-bar">
           <div class="stat-item">📝 <strong id="statQuizzes">0</strong></div>
           <div class="stat-item">✅ <strong id="statCorrect">0</strong></div>
@@ -89,15 +87,15 @@
       </div>
 
       <div class="sb-section">
-        <div class="sb-section-title">📂 History</div>
-        <div id="sessionList"></div>
+        <div class="sb-section-title"><span data-i18n="history">📂 History</span></div>
+        <button class="sb-btn" onclick="startReview('saved')">★ <span data-i18n="difficult"></span></button><div id="sessionList"></div>
       </div>
 
       <div class="sb-section">
-        <button class="export-btn" onclick="exportSession()">📥 Export as Markdown</button>
+        <button class="export-btn" onclick="exportSession()"><span data-i18n="export">📥 Export as Markdown</span></button>
       </div>
     </div>
-    <div class="sidebar-footer">AI Exam Coach · Powered by DeepSeek AI · Ready for focused practice</div>
+    <div class="sidebar-footer"><span data-i18n="footer">AI Exam Coach · Powered by DeepSeek AI · Ready for focused practice</span></div>
   </aside>
 
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
@@ -105,11 +103,11 @@
   <!-- ═══ MAIN ═══ -->
   <div class="main">
     <div class="main-header">
-      <button class="hamburger" aria-label="Toggle navigation" aria-controls="sidebar" onclick="toggleSidebar()">☰</button>
-      <div><div class="mode-title">AI Exam Coach</div><div class="mode-desc">Your personal exam preparation assistant</div></div>
+      <button class="hamburger" aria-label="Toggle navigation" aria-controls="sidebar" onclick="toggleSidebar()" data-i18n-aria-label="navigation">☰</button>
+      <div><div class="mode-title">AI Exam Coach</div><div class="mode-desc"><span data-i18n="subtitle">Your personal exam preparation assistant</span></div></div>
       <div class="header-spacer"></div>
       <button class="header-btn practice-toggle" id="practiceToggleBtn" onclick="togglePractice()">
-        <span id="practiceToggleIcon">📋</span> <span id="practiceToggleText">Practice</span>
+        <span id="practiceToggleIcon">📋</span> <span id="practiceToggleText"><span data-i18n="practice">Practice</span></span>
       </button>
     </div>
 
@@ -118,53 +116,56 @@
         <div class="chat-area" id="chatArea">
           <div class="welcome" id="welcomeScreen">
             <div class="welcome-icon">🎓</div>
-            <h2>Welcome to AI Exam Coach</h2>
-            <p>Upload your study material or tell me a topic. I'll generate quizzes, coding problems, flashcards, and explanations.</p>
+            <h2><span data-i18n="welcome">Welcome to AI Exam Coach</span></h2>
+            <p><span data-i18n="welcomeText">Upload your study material or tell me a topic. I&#x27;ll generate quizzes, coding problems, flashcards, and explanations.</span></p>
             <div class="feature-grid">
-              <div class="feature-card" onclick="quickCommand('/quiz')"><div class="fc-icon">📝</div><h4>Quiz</h4><p>Single-answer multiple choice</p></div>
-              <div class="feature-card" onclick="quickCommand('/multiquiz')"><div class="fc-icon">☑️</div><h4>Multi-Quiz</h4><p>Multiple correct answers</p></div>
-              <div class="feature-card" onclick="quickCommand('/coding')"><div class="fc-icon">💻</div><h4>Coding</h4><p>Programming exercises</p></div>
-              <div class="feature-card" onclick="quickCommand('/explain')"><div class="fc-icon">💡</div><h4>Explain</h4><p>Concept explanations</p></div>
-              <div class="feature-card" onclick="quickCommand('/flashcards')"><div class="fc-icon">🃏</div><h4>Flashcards</h4><p>Term &amp; definition cards</p></div>
-              <div class="feature-card" onclick="quickCommand('/summary')"><div class="fc-icon">📋</div><h4>Summary</h4><p>Summarize your material</p></div>
+              <div class="feature-card" onclick="quickCommand('/quiz')"><div class="fc-icon">📝</div><h4><span data-i18n="quiz">Quiz</span></h4><p><span data-i18n="singleDesc">Single-answer multiple choice</span></p></div>
+              <div class="feature-card" onclick="quickCommand('/multiquiz')"><div class="fc-icon">☑️</div><h4><span data-i18n="multiQuiz">Multi-Quiz</span></h4><p><span data-i18n="multiDesc">Multiple correct answers</span></p></div>
+              <div class="feature-card" onclick="quickCommand('/coding')"><div class="fc-icon">💻</div><h4><span data-i18n="coding">Coding</span></h4><p><span data-i18n="codingDesc">Programming exercises</span></p></div>
+              <div class="feature-card" onclick="quickCommand('/explain')"><div class="fc-icon">💡</div><h4><span data-i18n="explain">Explain</span></h4><p><span data-i18n="explainDesc">Concept explanations</span></p></div>
+              <div class="feature-card" onclick="quickCommand('/flashcards')"><div class="fc-icon">🃏</div><h4><span data-i18n="flashcards">Flashcards</span></h4><p><span data-i18n="cardsDesc">Term &amp; definition cards</span></p></div>
+              <div class="feature-card" onclick="quickCommand('/summary')"><div class="fc-icon">📋</div><h4><span data-i18n="summary">Summary</span></h4><p><span data-i18n="summaryDesc">Summarize your material</span></p></div>
             </div>
             <div class="quick-actions">
-              <button class="quick-action-btn" onclick="quickSend('/quiz Generate 5 questions about data structures')">🚀 Sample quiz</button>
-              <button class="quick-action-btn" onclick="quickSend('/coding Create a linked list problem')">💻 Sample coding</button>
+              <button class="quick-action-btn" onclick="quickSend(t('sampleQuizPrompt'))"><span data-i18n="sampleQuiz">🚀 Sample quiz</span></button>
+              <button class="quick-action-btn" onclick="quickSend(t('sampleCodingPrompt'))"><span data-i18n="sampleCoding">💻 Sample coding</span></button>
             </div>
           </div>
         </div>
         <div class="input-area">
+          <div class="context-bar"><label><input type="checkbox" id="includeContext" checked onchange="toggleContext()"><span data-i18n="attachContext"></span></label><span id="contextLabel" aria-live="polite"></span></div>
           <div class="input-row">
             <div class="input-box">
-              <textarea id="userInput" aria-label="Message" rows="1" placeholder="Ask anything, or /quiz, /coding, /explain…" onkeydown="handleInputKey(event)" oninput="autoResize(this)"></textarea>
+              <textarea id="userInput" aria-label="Message" rows="1" placeholder="Ask anything, or /quiz, /coding, /explain…" onkeydown="handleInputKey(event)" oninput="autoResize(this)" data-i18n-aria-label="message"></textarea>
             </div>
-            <button id="stopBtn" class="header-btn" onclick="cancelGeneration()" hidden>Stop</button><button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send">▶</button>
+            <button id="stopBtn" class="header-btn" onclick="cancelGeneration()" hidden><span data-i18n="stop">Stop</span></button><button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send" data-i18n-title="send">▶</button>
           </div>
-          <div class="input-hint">Enter = send · Shift+Enter = new line · /quiz · /multiquiz · /coding · /explain · /flashcards · /summary</div>
+          <div class="input-hint"><span data-i18n="inputHint">Enter = send · Shift+Enter = new line · /quiz · /multiquiz · /coding · /explain · /flashcards · /summary</span></div>
         </div>
       </div>
 
-      <div id="paneDivider" class="pane-divider" role="separator" tabindex="0" aria-label="Resize practice panel" aria-orientation="vertical" title="Drag to resize · Arrow keys to adjust · Double-click to reset"></div>
+      <div id="paneDivider" class="pane-divider" role="separator" tabindex="0" aria-label="Resize practice panel" aria-orientation="vertical" title="Drag to resize · Arrow keys to adjust · Double-click to reset" data-i18n-aria-label="resizeHelp" data-i18n-title="resizeTitle"></div>
       <aside class="practice-panel" id="practicePanel">
         <div class="practice-header">
-          <div><div class="practice-title">Practice Workspace</div><div class="practice-subtitle">Quiz / coding / flashcards</div></div>
-          <div class="practice-actions"><button id="focusPractice" class="header-btn" onclick="togglePracticeFocus()" aria-pressed="false">⛶ Focus</button><button class="header-btn" onclick="clearPractice()">Clear</button></div>
+          <div><div class="practice-title"><span data-i18n="practiceTitle">Practice Workspace</span></div><div class="practice-subtitle"><span data-i18n="practiceSubtitle">Quiz / coding / flashcards</span></div></div>
+          <div class="practice-actions"><button id="focusPractice" class="header-btn" onclick="togglePracticeFocus()" aria-pressed="false">⛶ Focus</button><button class="header-btn" onclick="clearPractice()"><span data-i18n="clear">Clear</span></button></div>
         </div>
-        <div class="practice-toolbar"><select id="practiceHistory" aria-label="Choose a previous practice" onchange="selectPractice(this.value)"></select><span class="resize-help">Drag the divider to resize</span></div>
+        <div class="practice-toolbar"><select id="practiceHistory" aria-label="Choose a previous practice" onchange="selectPractice(this.value)" data-i18n-aria-label="choosePractice"></select><span class="resize-help"><span data-i18n="resizeHelp">Drag the divider to resize</span></span></div>
         <div class="practice-body" id="practiceBody">
-          <div class="practice-empty">No active practice yet. Use <strong>/quiz</strong>, <strong>/coding</strong>, or <strong>/flashcards</strong>.</div>
+          <div class="practice-empty" data-i18n="emptyPractice"></div>
         </div>
       </aside>
     </div>
 
     <div class="mobile-tabs" id="mobileTabs">
-      <button class="active" id="tabChat" onclick="switchMobileTab('chat')"><span class="tab-icon">💬</span>Chat</button>
-      <button id="tabPractice" onclick="switchMobileTab('practice')"><span class="tab-icon">📋</span>Practice</button>
+      <button class="active" id="tabChat" onclick="switchMobileTab('chat')"><span class="tab-icon">💬</span><span data-i18n="chat">Chat</span></button>
+      <button id="tabPractice" onclick="switchMobileTab('practice')"><span class="tab-icon">📋</span><span data-i18n="practice">Practice</span></button>
     </div>
   </div>
 </div>
 
+<script src="locales.js" defer></script>
 <script src="app.js" defer></script>
+<script src="practice.js" defer></script>
 </body>
 </html>

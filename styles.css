@@ -345,3 +345,23 @@ body.practice-focus .resize-help{display:none}
 .sidebar-header h1{font-size:.9rem;gap:8px}
 .sidebar-header h1 .logo{width:28px;height:28px}
 .sidebar-header .icon-btn{width:28px;height:30px}
+/* Quiz navigation stays compact while the current question gets the reading space. */
+.quiz-navigation{display:flex;flex-direction:column;gap:10px}
+.quiz-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:.8rem}
+.quiz-toolbar .header-btn{height:auto;min-height:36px;white-space:normal;text-align:left}
+.question-numbers{display:flex;gap:6px;flex-wrap:wrap}
+.question-number{min-width:36px;min-height:36px;padding:5px 8px;border:1px solid var(--border);border-radius:8px;color:var(--text);background:var(--bg-input);cursor:pointer}
+.question-number[aria-current=step]{outline:2px solid var(--primary);outline-offset:1px}
+.question-number.answered-correct{background:var(--success-light);border-color:var(--success)}
+.question-number.answered-wrong{background:var(--danger-light);border-color:var(--danger)}
+.question-instruction{font-size:.78rem;color:var(--text-secondary);margin-bottom:12px}
+.quiz-pager{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.8rem}
+button:disabled{cursor:default;opacity:.5}
+.quiz-actions .quiz-btn{white-space:normal;text-align:left}
+.context-bar{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.73rem;color:var(--text-secondary);margin-bottom:8px;min-width:0}
+.context-bar label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.context-bar input{accent-color:var(--primary)}
+#contextLabel{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flashcard-answer,.hint-content{padding:12px;border-radius:8px;background:var(--primary-light);white-space:pre-wrap;overflow-wrap:anywhere}
+.problem-card summary{cursor:pointer;color:var(--primary);font-size:.85rem;font-weight:600}
+@media(max-width:768px){.quiz-actions .quiz-btn{padding:10px 12px}.quiz-pager .quiz-btn{padding:10px 14px}.context-bar{font-size:.7rem}.practice-actions{margin-left:auto}.practice-header>div:first-child{min-width:0}.practice-title{overflow-wrap:anywhere}}
